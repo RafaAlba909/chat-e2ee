@@ -16,7 +16,7 @@ function enviarMensaje() {
 function descifrarMensaje() {
     const mensajeCifrado = document.getElementById("mensajeCifrado").value;
     const clave = document.getElementById("clave").value;
-
+SZ
     if (!mensajeCifrado || !clave) {
         alert("Por favor, ingresa un mensaje cifrado y la clave secreta.");
         return;
