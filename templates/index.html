@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat E2EE - Cifrado Extremo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="/static/script.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+            color: #2e3b4e;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: row; /* Cambiar a horizontal */
+            overflow: hidden;
+        }
+        h1, h2 {
+            color: #34495e;
+            font-size: 32px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        h3 {
+            color: #7f8c8d;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            height: 60vh;
+            overflow: hidden;
+        }
+        .container2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            height: 60vh;
+            overflow: hidden;
+            margin-left: 30px; /* Espacio entre los dos contenedores */
+        }
+        input, textarea, button {
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 8px;
+            border: 1px solid #dfe4ea;
+            background-color: #ecf0f1;
+            color: #2e3b4e;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input:focus, textarea:focus, button:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        button {
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        button:active {
+            background-color: #1c5985;
+        }
+        .output {
+            background-color: #ecf0f1;
+            color: #2e3b4e;
+            padding: 12px;
+            border-radius: 8px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            margin-top: 20px;
+            font-size: 16px;
+            height: 100px;
+            overflow-y: auto;
+        }
+        .footer {
+            margin-top: 20px;
+            color: #95a5a6;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cifrar Mensaje</h2>
+        <input type="text" id="clave" placeholder="Clave secreta" />
+        <textarea id="mensaje" placeholder="Escribe tu mensaje..." rows="4"></textarea>
+        <button onclick="enviarMensaje()">Cifrar y enviar</button>
+
+        <h3>Mensaje cifrado:</h3>
+        <div id="salida" class="output"></div>
+    </div>
+
+    <div class="container2">
+        <h2>Descifrar mensaje</h2>
+        <textarea id="mensajeCifrado" placeholder="Pega el mensaje cifrado" rows="4"></textarea>
+        <button onclick="descifrarMensaje()">Descifrar</button>
+
+        <h3>Mensaje descifrado:</h3>
+        <div id="mensajeDescifrado" class="output"></div>
+    </div>
+
+    <div class="footer">
+        <p>Proyecto de Rafa || <a href="https://github.com/RafaAlba909" target="_blank">GitHub</a></p>
+    </div>
+</body>
+</html>
