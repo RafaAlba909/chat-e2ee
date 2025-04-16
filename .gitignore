@@ -1,0 +1,11 @@
+# Archivos del entorno virtual
+venv/
+
+# Archivos de sistema de archivos
+*.log
+*.pyc
+__pycache__/
+
+# Archivos específicos de editor
+.vscode/
+.idea/
